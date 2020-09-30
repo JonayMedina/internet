@@ -97,7 +97,7 @@ export default {
         return new Promise((res,rej)=>{
 
             Swal.fire({
-                thtml: '<pre class="h4" style="color:white">'+data.title +'</pre>',
+                title: data.title,
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#1565c0',

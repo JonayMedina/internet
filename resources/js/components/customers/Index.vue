@@ -307,7 +307,7 @@ export default {
         deleteCustomer(id){
             let me = this;
             const data = {
-                'url':'/api/customer/destroy/'+id,
+                'url':'/api/customers/destroy/'+id,
                 'title' :'Eliminar Cliente',
             }
             fire.deleteF(data)

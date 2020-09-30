@@ -113,7 +113,7 @@ class CustomerController extends Controller
         $customer->active = 0;
         $customer->save();
 
-        return response()->json('desactivado');
+        return response()->json(['message'=>'desactivado']);
     }
 
     public function activate(Request $request)
@@ -122,7 +122,7 @@ class CustomerController extends Controller
         $customer->active = 1;
         $customer->save();
 
-        return response()->json('activado');
+        return response()->json(['message' => 'activado']);
     }
 
 
@@ -130,7 +130,7 @@ class CustomerController extends Controller
     {
         $customer = Customer::findOrFail($id)->delete();
 
-        return response()->json('Eliminado');
+        return response()->json(['message' => 'Eliminado']);
     }
 
     public function emailV($email)

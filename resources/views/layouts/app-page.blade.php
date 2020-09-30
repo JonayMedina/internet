@@ -70,7 +70,7 @@
                                     </div>
                                 </div>
                                 <div class="header-info-rigth d-flex">
-                                    <li class="mr-3"><a class=" text-dark" href="{{ route('pay-report')}}"><i class="fas fa-file mx-3"></i>Reportar Pago</a></li>
+
                                     <li><a class="h1 text-dark" href="{{ url('administracion/login')}}"><i class="fas fa-users mx-2"></i>Login</a></li>
                                 </div>
                             </div>
@@ -97,7 +97,7 @@
                                                     <li><a href="#about">Nuestra empresa</a></li>
                                                     <li><a href="#services">Servicios</a></li>
                                                 @endif
-
+                                                <li><a href="{{ route('pay-report')}}"><i class="fas fa-file mx-3"></i>Reportar Pago</a></li>
                                             </ul>
                                         </nav>
                                     </div>
@@ -169,33 +169,27 @@
                                 </div>
                             </div>
                         </div>
-                        {{-- <div class="col-xl-2 col-lg-2 col-md-3 col-sm-5">
+                        <div class="col-xl-2 col-lg-2 col-md-3 col-sm-5">
                             <div class="single-footer-caption mb-50">
                                 <div class="footer-tittle">
-                                    <h4>Our Support</h4>
+                                    <h4>Nuestros Servicios</h4>
                                     <ul>
-                                        <li><a href="#">Advanced</a></li>
-                                        <li><a href="#"> Management</a></li>
-                                        <li><a href="#">Corporate</a></li>
-                                        <li><a href="#">Customer</a></li>
-                                        <li><a href="#">Information</a></li>
+                                        <li>Intenert Inalambrico</li>
+
+                                        <li>Internet por fibra Optica</li>
+                                        <li>Soluciones Informaticas</li>
                                     </ul>
                                 </div>
                             </div>
-                        </div> --}}
-                        {{-- <div class="col-xl-2 col-lg-2 col-md-3 col-sm-5">
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-3 col-sm-5">
                             <div class="single-footer-caption mb-50">
                                 <div class="footer-tittle">
-                                    <h4>Quick Link</h4>
-                                    <ul>
-                                        <li><a href="#">New Law</a></li>
-                                        <li><a href="#">About</a></li>
-                                        <li><a href="#">Privacy Policy</a></li>
-                                        <li><a href="#">Licenses</a></li>
-                                    </ul>
+                                    <h4>Para usted </h4>
+                                    <p>Tenemos los mejores servicios y planes disponibles para usted, obtemga un servicio A1, no vuelva a tener inconvenientes poor fallas de Internet.</p>
                                 </div>
                             </div>
-                        </div> --}}
+                        </div>
 
                     </div>
                 </div>
@@ -203,16 +197,16 @@
                     <div class="row d-flex justify-content-between align-items-center">
                         <div class="col-xl-9 col-lg-8">
                             <div class="footer-copy-right">
-                                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                Copyright &copy; 2020 All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                                <p>
+                                Copyright &copy; 2020 All rights reserved | Made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="#" target="_blank">JonayMedina.com.ve</a>
+                                </p>
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-4">
                             <!-- Footer Social -->
                             <div class="footer-social f-right">
                                 <a href="#"><i class="fab fa-twitter"></i></a>
-                                <a href="https://www.facebook.com/sai4ull"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
                                 <a href="#"><i class="fas fa-globe"></i></a>
                                 <a href="#"><i class="fab fa-instagram"></i></a>
                             </div>

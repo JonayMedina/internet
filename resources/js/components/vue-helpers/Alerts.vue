@@ -50,7 +50,7 @@
                     case 3:
                         // deletePlan()
                         me.format = {
-                            'text' : 'Plan Eliminado',
+                            'text' : res,
                             'color' : 'blue',
                             'status' : true,
                             'type' : 'warning'

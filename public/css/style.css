@@ -177,7 +177,7 @@ h4,
 h5,
 h6 {
   font-family: "Muli", sans-serif;
-  color: #072366;
+  color: #da2b37;
   margin-top: 0px;
   font-style: normal;
   font-weight: 500;
@@ -187,7 +187,7 @@ h6 {
 /* line 24, Internet_service/assets/scss/_common.scss */
 p {
   font-family: "Muli", sans-serif;
-  color: #10285d;
+  color: #74060d;
   font-size: 16px;
   line-height: 30px;
   margin-bottom: 15px;
@@ -519,7 +519,7 @@ hr {
 .white-btn {
   padding: 30px 39px;
   background: #fff;
-  color: #072366 !important;
+  color: #da2b37 !important;
 }
 
 /* line 290, Internet_service/assets/scss/_common.scss */
@@ -565,7 +565,7 @@ hr {
 
 /* line 322, Internet_service/assets/scss/_common.scss */
 .cal-btn > p {
-  color: #072366 !important;
+  color: #da2b37 !important;
   font-weight: 700;
   font-size: 16px;
   display: inline-block;
@@ -591,7 +591,7 @@ hr {
 /* line 347, Internet_service/assets/scss/_common.scss */
 .border-btn {
   border: 1px solid #ff5600;
-  color: #464d65;
+  color: #74060d;
   background: none;
   border-radius: 5px;
   text-transform: capitalize;
@@ -2933,7 +2933,7 @@ hr {
 .section-tittle h2 {
   font-size: 42px;
   display: block;
-  color: #072366;
+  color: #da2b37;
   font-weight: 800;
   text-transform: capitalize;
   line-height: 1.4;
@@ -3473,7 +3473,7 @@ hr {
   font-size: 70px;
   font-weight: 800;
   margin-bottom: 14px;
-  color: #002d5b;
+  color: #800000;
   line-height: 1.2;
   text-transform: capitalize;
   margin-bottom: 29px;
@@ -3532,7 +3532,7 @@ hr {
 
 /* line 87, Internet_service/assets/scss/_h1-hero.scss */
 .slider-area .hero__caption p {
-  color: #464d65;
+  color: #74060d;
   margin-bottom: 42px;
   padding-right: 100px;
 }
@@ -3595,7 +3595,7 @@ hr {
 
 /* line 133, Internet_service/assets/scss/_h1-hero.scss */
 .slider-area2 .hero-cap h2 {
-  color: #072366;
+  color: #da2b37;
   font-size: 50px;
   font-weight: 800;
   text-transform: capitalize;
@@ -3807,14 +3807,15 @@ hr {
 
 /* line 9, Internet_service/assets/scss/_pricing.scss */
 .pricing-card-area .single-card .card-top p {
-  color: #838a9b;
-  font-size: 12px;
+  color: #423838;
+  font-size: 18px;
+  font-weight: 500;
   margin-bottom: 4px;
 }
 
 /* line 14, Internet_service/assets/scss/_pricing.scss */
 .pricing-card-area .single-card .card-top h4 {
-  color: #072366;
+  color: #da2b37;
   font-size: 25px;
   font-weight: 800;
   padding-right: 3px;
@@ -3838,14 +3839,14 @@ hr {
 
 /* line 31, Internet_service/assets/scss/_pricing.scss */
 .pricing-card-area .single-card .card-mid h4 span {
-  color: #838a9b;
-  font-size: 12px;
+  color: #423838;
+  font-size: 16px;
 }
 
 /* line 39, Internet_service/assets/scss/_pricing.scss */
 .pricing-card-area .single-card .card-bottom ul li {
-  color: #717081;
-  font-weight: 300;
+  color: #423838;
+  font-weight: 400;
   margin-bottom: 23px;
   font-size: 16px;
 }
@@ -3898,7 +3899,7 @@ hr {
 
 /* line 18, Internet_service/assets/scss/_services_section.scss */
 .service-area .single-services p {
-  color: #102039;
+  color: #74060d;
   font-size: 21px;
   font-weight: 600;
 }
@@ -4088,8 +4089,8 @@ hr {
 /* line 4, Internet_service/assets/scss/_testimonial.scss */
 .testimonial-area .testimonial-caption p {
   font-size: 16px;
-  color: #072366;
-  color: #717b9b;
+  color: #da2b37;
+  color: #74060d;
   line-height: 45px;
   line-height: 1.5;
   margin-bottom: 37px;
@@ -7749,4 +7750,8 @@ del {
     background-repeat: no-repeat;
     background-size: 100% 75%;
     height: 400px;
+}
+
+footer p {
+    color: #bdbdbd;
 }

@@ -3961,7 +3961,7 @@ __webpack_require__.r(__webpack_exports__);
     deleteCustomer: function deleteCustomer(id) {
       var me = this;
       var data = {
-        'url': '/api/customer/destroy/' + id,
+        'url': '/api/customers/destroy/' + id,
         'title': 'Eliminar Cliente'
       };
       _helpers_swalfire_js__WEBPACK_IMPORTED_MODULE_0__["default"].deleteF(data).then(function (res) {
@@ -4749,7 +4749,7 @@ __webpack_require__.r(__webpack_exports__);
         case 3:
           // deletePlan()
           me.format = {
-            'text': 'Plan Eliminado',
+            'text': res,
             'color': 'blue',
             'status': true,
             'type': 'warning'
@@ -93170,7 +93170,7 @@ __webpack_require__.r(__webpack_exports__);
 
     return new Promise(function (res, rej) {
       Swal.fire({
-        thtml: '<pre class="h4" style="color:white">' + data.title + '</pre>',
+        title: data.title,
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#1565c0',
