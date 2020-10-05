@@ -19,6 +19,12 @@ class PlanController extends Controller
         return response()->json(['plans' => $plans]);
     }
 
+    public function indexCount()
+    {
+        $plans = Plan::count();
+        return response()->json(['plans' => $plans]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

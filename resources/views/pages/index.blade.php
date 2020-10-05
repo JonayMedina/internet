@@ -268,9 +268,9 @@
                             <!-- Single Testimonial -->
                             <div class="single-testimonial">
                                 <div class="testimonial-caption">
-                                    <p>Brook presents your services with flexible, convenient and cdpose layouts. You can select your favorite layouts & elements for cular ts with unlimited ustomization possibilities. Pixel-perfect replica;ition of thei designers ijtls intended csents your se.</p>
+                                    <p>El mejor servicio con el mejor precio.</p>
                                     <div class="rattiong-caption">
-                                        <span>Jhon Smith<span>Gym Trainer</span> </span>
+                                        <span>Rachel Contreras<span>Ama de Casa</span> </span>
                                     </div>
                                 </div>
                             </div>
@@ -296,8 +296,8 @@
             <div class="row justify-content-center">
                 <div class="col-xl-6 col-lg-8 col-md-10 col-sm-10">
                     <div class="section-tittle text-center mb-90">
-                        <span>Our pricing plan for you</span>
-                        <h2>No hidden charges! choose your plan wisely.</h2>
+                        <span>Nuestros precios son los mejores.</span>
+                        <h2>Sin cargos Ocultos!.</h2>
                     </div>
                 </div>
             </div>
@@ -309,8 +309,8 @@
                                 <img src="./img/gallery/home-blog1.png" alt="">
                             </div>
                             <div class="blog-cap">
-                                <h3><a href="blog_details.html">The purpose of lolght invera jgrlie.</a></h3>
-                                <p>January 22, 2020</p>
+                                <h3><a href="#">Buen Servicio en todo momento.</a></h3>
+                                <p>Enero 22, 2020</p>
                             </div>
                         </div>
                     </div>
@@ -322,8 +322,8 @@
                                 <img src="./img/gallery/home-blog2.png" alt="">
                             </div>
                             <div class="blog-cap">
-                                <h3><a href="blog_details.html">The purpose of lolght invera jgrlie.</a></h3>
-                                <p>January 22, 2020</p>
+                                <h3><a href="blog_details.html">Estabilidad en la señal.</a></h3>
+                                <p>Mayo 05, 2020</p>
                             </div>
                         </div>
                     </div>
@@ -335,8 +335,8 @@
                                 <img src="./img/gallery/home-blog3.png" alt="">
                             </div>
                             <div class="blog-cap">
-                                <h3><a href="blog_details.html">The purpose of lolght invera jgrlie.</a></h3>
-                                <p>January 22, 2020</p>
+                                <h3><a href="blog_details.html">Planes Adaptados a sus necesidades.</a></h3>
+                                <p>Agosto 10, 2020</p>
                             </div>
                         </div>
                     </div>

@@ -2016,19 +2016,110 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       user: {},
       name: '',
-      email: ''
+      email: '',
+      plan: '',
+      charge: '',
+      customer: ''
     };
   },
   computed: {},
-  methods: {},
+  methods: {
+    index: function index() {
+      var me = this;
+      me.sales();
+      me.customers();
+      me.plans();
+    },
+    sales: function sales() {
+      var me = this;
+      axios.get('/api/charges/count').then(function (response) {
+        me.charge = response.data.charges;
+      });
+    },
+    customers: function customers() {
+      var me = this;
+      axios.get('/api/customers/count').then(function (response) {
+        me.customer = response.data.customers;
+      });
+    },
+    plans: function plans() {
+      var me = this;
+      axios.get('/api/plans/count').then(function (response) {
+        me.plan = response.data.plans;
+      });
+    }
+  },
   mounted: function mounted() {
     if (localStorage.user) this.user = JSON.parse(localStorage.user);
+    this.index();
   }
 });
 
@@ -27569,6 +27660,119 @@ var render = function() {
               _c("v-card-actions")
             ],
             1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-row",
+            [
+              _c(
+                "v-col",
+                { staticClass: "pb-2", attrs: { lg: "4", cols: "sm" } },
+                [
+                  _c(
+                    "v-card",
+                    [
+                      _c("v-row", { staticClass: "no-gutters" }, [
+                        _c("div", { staticClass: "col-auto" }, [
+                          _c("div", { staticClass: "cyan fill-height" }, [
+                            _vm._v(" ")
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col pa-3 py-4 cyan--text" }, [
+                          _c(
+                            "h5",
+                            { staticClass: "text-truncate text-uppercase" },
+                            [_vm._v("Pagos ultimos 30 dias.")]
+                          ),
+                          _vm._v(" "),
+                          _c("h1", {
+                            domProps: { textContent: _vm._s(_vm.charge) }
+                          })
+                        ])
+                      ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-col",
+                { staticClass: "pb-2", attrs: { lg: "4", cols: "sm" } },
+                [
+                  _c(
+                    "v-card",
+                    [
+                      _c("v-row", { staticClass: "no-gutters" }, [
+                        _c("div", { staticClass: "col-auto" }, [
+                          _c("div", { staticClass: "primary fill-height" }, [
+                            _vm._v(" ")
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "col pa-3 py-4 primary--text" },
+                          [
+                            _c(
+                              "h5",
+                              { staticClass: "text-truncate text-uppercase" },
+                              [_vm._v("Clientes Registrados")]
+                            ),
+                            _vm._v(" "),
+                            _c("h1", {
+                              domProps: { textContent: _vm._s(_vm.customer) }
+                            })
+                          ]
+                        )
+                      ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-col",
+                { staticClass: "pb-2", attrs: { lg: "4", cols: "sm" } },
+                [
+                  _c(
+                    "v-card",
+                    [
+                      _c("v-row", { staticClass: "no-gutters" }, [
+                        _c("div", { staticClass: "col-auto" }, [
+                          _c("div", { staticClass: "success fill-height" }, [
+                            _vm._v(" ")
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "col pa-3 py-4 success--text" },
+                          [
+                            _c(
+                              "h5",
+                              { staticClass: "text-truncate text-uppercase" },
+                              [_vm._v("Planes Registrados")]
+                            ),
+                            _vm._v(" "),
+                            _c("h1", {
+                              domProps: { textContent: _vm._s(_vm.plan) }
+                            })
+                          ]
+                        )
+                      ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
           )
         ],
         1
@@ -29592,7 +29796,7 @@ var render = function() {
       _c(
         "v-flex",
         { attrs: { xs6: "" } },
-        [_c("v-subheader", [_vm._v("Cobros")])],
+        [_c("v-subheader", [_vm._v("Listado de Cobros")])],
         1
       ),
       _vm._v(" "),
@@ -29704,6 +29908,29 @@ var render = function() {
                 ])
               })
             ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "router-link",
+        { attrs: { to: { name: "create-charge" } } },
+        [
+          _c(
+            "v-btn",
+            {
+              attrs: {
+                bottom: "",
+                color: "pink",
+                dark: "",
+                fab: "",
+                fixed: "",
+                right: ""
+              }
+            },
+            [_c("v-icon", [_vm._v("mdi-plus")])],
             1
           )
         ],
@@ -93006,7 +93233,7 @@ function initialize(store, router) {
       next({
         name: 'login'
       });
-    } else if (to.path == '/access/' && currentUser != null) {
+    } else if (to.path == '/administracion/' && currentUser != null || to.path == '/administracion/login' && currentUser != null) {
       next({
         name: 'home'
       });
@@ -93234,35 +93461,59 @@ var routes = [{
 }, {
   path: '/administracion/bancos',
   name: 'banks',
-  component: _components_banks_Index__WEBPACK_IMPORTED_MODULE_3__["default"]
+  component: _components_banks_Index__WEBPACK_IMPORTED_MODULE_3__["default"],
+  meta: {
+    requireAuth: true
+  }
 }, {
   path: '/administracion/planes',
   name: 'plans',
-  component: _components_plans_index__WEBPACK_IMPORTED_MODULE_5__["default"]
+  component: _components_plans_index__WEBPACK_IMPORTED_MODULE_5__["default"],
+  meta: {
+    requireAuth: true
+  }
 }, {
   path: '/administracion/planes/crear',
   name: 'create-plan',
-  component: _components_plans_create__WEBPACK_IMPORTED_MODULE_6__["default"]
+  component: _components_plans_create__WEBPACK_IMPORTED_MODULE_6__["default"],
+  meta: {
+    requireAuth: true
+  }
 }, {
   path: '/administracion/clientes',
   name: 'customers',
-  component: _components_customers_index__WEBPACK_IMPORTED_MODULE_9__["default"]
+  component: _components_customers_index__WEBPACK_IMPORTED_MODULE_9__["default"],
+  meta: {
+    requireAuth: true
+  }
 }, {
   path: '/administracion/cobros',
   name: 'charges',
-  component: _components_charges_index__WEBPACK_IMPORTED_MODULE_4__["default"]
+  component: _components_charges_index__WEBPACK_IMPORTED_MODULE_4__["default"],
+  meta: {
+    requireAuth: true
+  }
 }, {
   path: '/administracion/cobros/crear',
   name: 'create-charge',
-  component: _components_charges_Create__WEBPACK_IMPORTED_MODULE_7__["default"]
+  component: _components_charges_Create__WEBPACK_IMPORTED_MODULE_7__["default"],
+  meta: {
+    requireAuth: true
+  }
 }, {
   path: '/administracion/cobros/historial',
   name: 'history-charge',
-  component: _components_charges_History__WEBPACK_IMPORTED_MODULE_8__["default"]
+  component: _components_charges_History__WEBPACK_IMPORTED_MODULE_8__["default"],
+  meta: {
+    requireAuth: true
+  }
 }, {
   path: '/administracion/home',
   name: 'home',
-  component: _components_Home__WEBPACK_IMPORTED_MODULE_1__["default"]
+  component: _components_Home__WEBPACK_IMPORTED_MODULE_1__["default"],
+  meta: {
+    requireAuth: true
+  }
 }];
 
 /***/ }),

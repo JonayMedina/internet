@@ -26,6 +26,12 @@ class CustomerController extends Controller
         return response()->json(['customers' => $customers]);
     }
 
+    public function indexCount()
+    {
+        $customers = Customer::count();
+        return response()->json(['customers' => $customers]);
+    }
+
     public function search(Request $request)
     {
         $customer = Customer::where('dni', $request->dni)->with('contract:customer_id,id,plan_id')->first();

@@ -1,7 +1,7 @@
 <template>
     <v-layout row wrap mx-2>
             <v-flex xs6>
-                <v-subheader>Cobros</v-subheader>
+                <v-subheader>Listado de Cobros</v-subheader>
             </v-flex>
 
             <v-flex xs12>
@@ -37,11 +37,11 @@
                     </v-data-table>
                 </v-card>
             </v-flex>
-            <!-- <router-link :to="{ name: 'create-charge'}">
+            <router-link :to="{ name: 'create-charge'}">
                 <v-btn bottom color="pink" dark fab fixed right  >
                   <v-icon>mdi-plus</v-icon>
                 </v-btn>
-            </router-link> -->
+            </router-link>
     </v-layout>
 
 </template>

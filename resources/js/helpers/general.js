@@ -5,7 +5,7 @@ export function initialize(store,router){
 
 		if (requireAuth && !currentUser) {
 			next({name:'login'});
-		}else if(to.path == '/access/' && currentUser != null){
+		}else if(to.path == '/administracion/' && currentUser != null || to.path == '/administracion/login' && currentUser != null){
 			next({name:'home'});
 		} else{
 			next();

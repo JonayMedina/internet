@@ -16,9 +16,16 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        $date = Carbon::today()->subDays(93);
+        $date = Carbon::today()->subDays(63);
         $payments = Payment::where('created_at', '>=', $date)->with(['customer:id,name', 'bank:id,name'])->get()->reverse();
 
+        return response()->json(['charges' => $payments]);
+    }
+
+    public function indexCount()
+    {
+        $date = Carbon::today()->subDays(31);
+        $payments = Payment::where('created_at', '>=', $date)->count();
         return response()->json(['charges' => $payments]);
     }
 

@@ -21,6 +21,7 @@ Route::group(['middleware' => 'auth:api'], function (){
 
     Route::group(['prefix' => 'customers'], function(){
         Route::get('/', 'CustomerController@index');
+        Route::get('count', 'CustomerController@indexCount');
         Route::post('store', 'CustomerController@store');
         Route::put('update/{id}', 'CustomerController@update');
         Route::put('desactive/{id}', 'CustomerController@desactive');
@@ -33,6 +34,7 @@ Route::group(['middleware' => 'auth:api'], function (){
 
     Route::group(['prefix' => 'plans'], function(){
         Route::get('/', 'PlanController@index');
+        Route::get('count', 'PlanController@indexCount');
         Route::post('store', 'PlanController@store');
         Route::put('update/{plan}', 'PlanController@update');
         Route::put('desactive/{plan}', 'PlanController@desactive');
@@ -43,6 +45,7 @@ Route::group(['middleware' => 'auth:api'], function (){
 
     Route::group(['prefix' => 'charges'], function () {
         Route::get('/', 'PaymentController@index');
+        Route::get('count', 'PaymentController@indexCount');
         Route::get('history', 'PaymentController@indexHistory');
         Route::post('store', 'PaymentController@store');
         Route::get('show/{id}', 'PaymentController@show');

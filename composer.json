@@ -41,6 +41,7 @@
             "App\\": "app/",
             "Models\\": "app/Models/",
             "Traits\\": "app/Http/Traits/",
+            "Resources\\": "app/http/resources/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }
