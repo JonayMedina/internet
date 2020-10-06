@@ -114,8 +114,7 @@ export default {
         index() {
             let me = this;
 
-            me.axios
-                .get('/api/charges')
+            axios.get('/api/charges')
                 .then(response => {
                     me.charges = response.data.charges;
             });

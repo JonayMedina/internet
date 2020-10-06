@@ -24,7 +24,7 @@
                             </div>
                             <div class="col pa-3 py-4 cyan--text">
                                 <h5 class="text-truncate text-uppercase">Pagos ultimos 30 dias.</h5>
-                                <h1 v-text="charge"></h1>
+                                <h1 v-text="count"></h1>
                             </div>
                         </v-row>
                     </v-card>
@@ -56,14 +56,15 @@
                     </v-card>
                 </v-col>
             </v-row>
-            <!-- <v-row>
+            <v-row>
                 <v-col>
                     <v-card class="mx-auto text-center">
                         <v-card-title class="primary--text">
-                            Sales
+                            Cobros
                         </v-card-title>
                         <v-sparkline
-                            :value="sparklineData"
+                            :value="values"
+                            :labels="labels"
                             padding="18"
                             label-size="4"
                             color="cyan"
@@ -71,12 +72,9 @@
                             :line-width="2"
                             :stroke-linecap="'round'">
                         </v-sparkline>
-                        <v-card-actions class="py-4 justify-center">
-                            <v-btn color="primary" to="/reports">View Report</v-btn>
-                        </v-card-actions>
                     </v-card>
                 </v-col>
-            </v-row> -->
+            </v-row>
         </v-flex>
 
     </v-layout>
@@ -91,25 +89,41 @@
                 name: '',
                 email: '',
                 plan: '',
-                charge: '',
-                customer: '',
+                count: 0,
+                customer: 0,
+                total: [],
+                days: [],
             }
         },
         computed:{
+            values() {
+                console.log(Object.values(this.total))
+                return Object.values(this.total);
+            },
+            labels() {
+                console.log(Object.values(this.days))
+                return Object.keys(this.days);
+            }
         },
         methods: {
             index(){
                 let me = this
-                me.sales();
+                me.charges();
                 me.customers()
                 me.plans()
             },
-            sales(){
+            charges(){
                 let me = this
                 axios
                 .get('/api/charges/count')
                 .then(response => {
-                    me.charge = response.data.charges;
+                    var res = response.data
+                    me.count = res.count;
+                    // me.total = Object.values( response.data.total);
+                    me.total = res.total
+                    me.days = res.days
+                    console.log(me.total)
+
                 });
             },
             customers(){

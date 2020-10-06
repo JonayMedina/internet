@@ -17,16 +17,33 @@ class PaymentController extends Controller
     public function index()
     {
         $date = Carbon::today()->subDays(63);
-        $payments = Payment::where('created_at', '>=', $date)->with(['customer:id,name', 'bank:id,name'])->get()->reverse();
+        $payments = Payment::where('created_at', '>=', $date)->with(['customer:id,name', 'bank:id,name'])->get();
 
         return response()->json(['charges' => $payments]);
     }
 
     public function indexCount()
     {
-        $date = Carbon::today()->subDays(31);
-        $payments = Payment::where('created_at', '>=', $date)->count();
-        return response()->json(['charges' => $payments]);
+        $total = [];
+        $amount = 0;
+        $date = Carbon::now();
+        $day = $date->day;
+        $month = $date->month;
+        $payments = Payment::whereMonth('created_at', '>=', $month)->get();
+
+        $count = $payments->count();
+        for ($d=1; $d < $day; $d++) {
+            for ($i=0; $i <$count ; $i++) {
+                if (Carbon::parse($payments[$i]->payment_date)->day == $d) {
+                    $amount += $payments[$i]->amount;
+                }
+            }
+            $days[$d] = $d;
+            $total[$d] = $amount;
+            $amount = 0;
+        }
+        $count = $payments->count();
+        return response()->json(['count' => $count, 'total'=>$total, 'days' => $days]);
     }
 
     public function indexHistory()

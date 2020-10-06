@@ -4,13 +4,13 @@ import Home from './components/Home';
 import AdminHome from './components/admin/Home';
 import Banks from './components/banks/Index';
 
-import Charges from './components/charges/index';
-import Plans from './components/plans/index';
-import CreatePlan from './components/plans/create';
+import Charges from './components/charges/Index';
+import Plans from './components/plans/Index';
+import CreatePlan from './components/plans/Create';
 import CreateCharge from './components/charges/Create';
 import HistoryCharge from './components/charges/History';
 
-import Customers from './components/customers/index';
+import Customers from './components/customers/Index';
 
 export const routes = [
     {
