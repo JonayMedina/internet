@@ -12,26 +12,26 @@
 
                             <p class="mt-2" style="color:red;" v-show="errC" v-text="errC"></p>
                         </div>
-                        <div class="form-group mt-3">
-                            <button class="boxed-btn" @click="searchCustomer(dni)"
-                            :disabled="loading">
-                                <div class="spinner-border spinner-border-sm" v-show="loading">
-                                </div>
-                            Buscar Cliente</button>
-                        </div>
+                        <button class="boxed-btn mt-3 w-100" @click="searchCustomer(dni)"
+                        :disabled="loading">
+                            <div class="spinner-border spinner-border-sm" v-show="loading">
+                            </div>
+                        Buscar Cliente</button>
                     </div>
                 </div>
             </div>
             <div class="col-md-8 mb-50">
-                <div class="hero-cap hero-cap2 text-center" v-if="customer.name">
-                    <h3 v-text="customer.name"></h3>
-                    <h3 class="card-top" v-text="'Cliente: '+customer.email"></h3>
-                    <h3 class="card-top" v-text="'Nro de Telefono: '+customer.phone"></h3>
-                    <h3 class="card-top" v-text="'Monto del plan: '+plan.cost"></h3>
-                    <h3 class="card-top" v-text="'Numero de Contrato: '+contract.id"></h3>
+                <div class="hero-cap hero-cap2 text-left" v-if="customer.name">
+                    <h2 class="card-top" v-text="customer.name"></h2>
+                    <span>E-mail: <h2 class="card-top" v-text="customer.email"></h2></span>
+                    <span>Nro de Telefono: <h2 class="card-top" v-text="customer.phone"></h2></span>
+                    <span>Monto del plan: <h2 class="card-top" v-text="plan.cost"></h2></span>
+                    <span>Numero de Contrato: <h2 class="card-top" v-text="contract.id"></h2></span>
+
                 </div>
-                <div class="hero-cap hero-cap2 text-center" v-else>
-                    <h3>Por Favor consulte su Cedula Correctamente</h3>
+                <div class="" v-else>
+                    <h3>Consulte sus datos y Mantengase al dia.</h3>
+                    <img :src="'./img/gallery/home-blog2.png'" class="img-reponsive w-100" alt="">
                 </div>
             </div>
             <div class="col-md-12" v-if="customer.name" id="pay">

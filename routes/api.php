@@ -23,6 +23,7 @@ Route::group(['middleware' => 'auth:api'], function (){
         Route::get('/', 'CustomerController@index');
         Route::get('count', 'CustomerController@indexCount');
         Route::post('store', 'CustomerController@store');
+        Route::get('remember-pay/{customer}', 'CustomerController@rememberPay');
         Route::put('update/{id}', 'CustomerController@update');
         Route::put('desactive/{id}', 'CustomerController@desactive');
         Route::put('activate/{id}', 'CustomerController@activate');

@@ -16,6 +16,8 @@ class Customer extends Model
         'billing_date', 'active'
     ];
 
+    protected $appends = ['last_pay'];
+
     public function contract()
     {
         return $this->hasOne(Contract::class);
@@ -25,4 +27,11 @@ class Customer extends Model
     {
         return $this->hasMany(Payment::class);
     }
+
+    protected function getLastPayAttribute()
+    {
+        return $this->payment()->select('created_at')->orderBy('created_at','desc')->first();
+    }
+
+    
 }

@@ -10,7 +10,7 @@
                 <div class="row justify-content-between">
                     <div class="col-xl-12 mb-50">
                         <div class="section-tittle hero-cap2 text-center">
-                            <h2>Reportar Pago</h2>
+                            <h2>Reportar tu Pago</h2>
                         </div>
                     </div>
                     <div class="col-xl-12">
@@ -24,5 +24,5 @@
 @endsection
 
 @section('scripts')
-<script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
 @endsection

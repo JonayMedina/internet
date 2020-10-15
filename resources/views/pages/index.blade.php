@@ -322,7 +322,7 @@
                                 <img src="./img/gallery/home-blog2.png" alt="">
                             </div>
                             <div class="blog-cap">
-                                <h3><a href="blog_details.html">Estabilidad en la señal.</a></h3>
+                                <h3><a href="blog_details.html">La mejor Estabilidad en la señal.</a></h3>
                                 <p>Mayo 05, 2020</p>
                             </div>
                         </div>
@@ -409,9 +409,61 @@
                             <p>Send us your query anytime!</p>
                         </div>
                     </div>
+                    <div class="media contact-info">
+                        <span class="contact-info__icon"><i class="ti-email"></i> Envianos un mensaje con tu numero para contactarte!</span>
+                        <div class="media-body">
+                            <textarea name="what-text" id="what-text" cols="" rows="10"></textarea>
+                        </div>
+
+                    </div>
+                    <div class="media contact-info">
+                        <button class="boxed-btn" id="send">Enviar</button>
+                        <div id="success"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+@endsection
+
+@section('scripts')
+    <script type="text/javascript">
+    $(document).ready( function() {
+        $.ajaxSetup({
+             headers: {
+                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+             }
+         });
+
+        function validForm() {
+            if($("#what-text").val() == ""){
+                alert("El campo no puede estar vacío.");
+                $("#what-text").focus();
+                return false;
+            }
+            return true;
+        }
+
+        $("#send").click( function() {
+            if(validaForm()){
+                var text = $('#what-text').val();
+                $.ajax({
+                    url:'https://api.whatsapp.com/api/send?phone=584263309112&text='+text,
+                    type:'post',
+                    success: function (response) {
+                        console.log(response)
+                        var str = '<h4>Mensaje enviado</h4>';
+
+                        $('#success').html(str);
+                        $('#what-text').empty();
+                    },
+                    statusCode: {
+                        404: function() { alert('web not found'); }
+                    }
+                })
+            })
+        });
+    });
+    </script>
 @endsection

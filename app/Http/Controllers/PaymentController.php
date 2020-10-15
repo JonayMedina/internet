@@ -17,7 +17,7 @@ class PaymentController extends Controller
     public function index()
     {
         $date = Carbon::today()->subDays(63);
-        $payments = Payment::where('created_at', '>=', $date)->with(['customer:id,name', 'bank:id,name'])->get();
+        $payments = Payment::where('created_at', '>=', $date)->with(['customer:id,name', 'bank:id,name'])->orderBy('id', 'desc')->get();
 
         return response()->json(['charges' => $payments]);
     }
@@ -48,7 +48,7 @@ class PaymentController extends Controller
 
     public function indexHistory()
     {
-        $payments = Payment::with(['customer:id,name', 'bank:id,name'])->get()->reverse();
+        $payments = Payment::with(['customer:id,name', 'bank:id,name'])->orderBy('id','desc')->get();
 
         return response()->json(['charges' => $payments]);
     }

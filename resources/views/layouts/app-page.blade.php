@@ -51,32 +51,7 @@
         <!-- Header Start -->
         <div class="header-area header-transparent">
             <div class="main-header ">
-                <div class="header-top d-none d-lg-block">
-                    <div class="container-fluid">
-                        <div class="col-xl-12">
-                            <div class="row d-flex justify-content-between align-items-center">
-                                <div class="header-info-left d-flex">
-                                    <ul>
-                                        <li>Call Us: (+84) 939 512 999</li>
-                                        <li>info@office.com </li>
-                                    </ul>
-                                    <div class="header-social">
-                                        <ul>
-                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                            <li><a  href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                            <li> <a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="header-info-rigth d-flex">
 
-                                    <li><a class="h1 text-dark" href="{{ url('administracion/login')}}"><i class="fas fa-users mx-2"></i>Login</a></li>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="header-bottom  header-sticky">
                     <div class="container-fluid">
                         <div class="row align-items-center">
@@ -97,7 +72,7 @@
                                                     <li><a href="#about">Nuestra empresa</a></li>
                                                     <li><a href="#services">Servicios</a></li>
                                                 @endif
-                                                <li><a href="{{ route('pay-report')}}"><i class="fas fa-file mx-3"></i>Reportar Pago</a></li>
+                                                <li><a href="{{ route('pay-report')}}"><i class="fas fa-file mx-3"></i>Reporta tu Pago</a></li>
                                             </ul>
                                         </nav>
                                     </div>
@@ -190,12 +165,26 @@
                                 </div>
                             </div>
                         </div>
-
+                        <div class="col-lx-2 col-lg-2 col-md-3 col-sm-5">
+                            <div class="single-footer-caption mb-50">
+                                <div class="footer-tittle">
+                                    <h4>Contactenos </h4>
+                                    <ul>
+                                        <li>Call Us: (+84) 939 512 999</li>
+                                        <li>info@office.com </li>
+                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                        <li><a  href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                        <li> <a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="footer-bottom">
                     <div class="row d-flex justify-content-between align-items-center">
-                        <div class="col-xl-9 col-lg-8">
+                        <div class="col-xl-6 col-lg-4">
                             <div class="footer-copy-right">
                                 <p>
                                 Copyright &copy; 2020 All rights reserved | Made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="#" target="_blank">JonayMedina.com.ve</a>

@@ -15,7 +15,7 @@ class BankSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
-		for ($i=0; $i < 10; $i++) {
+		for ($i=1; $i < 10; $i++) {
 		    \DB::table('banks')->insert([
                 'name' => $faker->name,
                 'account_number' => $faker->bankAccountNumber,

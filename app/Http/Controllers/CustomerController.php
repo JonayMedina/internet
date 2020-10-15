@@ -9,7 +9,9 @@ use Traits\HelpersTrait;
 use App\Models\Customer;
 use App\Models\Plan;
 use App\Models\Contract;
+use App\Models\Payment;
 use App\Mail\CustomerContract;
+use App\Mail\RememberPay;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -23,7 +25,8 @@ class CustomerController extends Controller
     public function index()
     {
         $customers = Customer::all();
-        return response()->json(['customers' => $customers]);
+        // dd($customers);
+        return response()->json(['customers' => $customers->toArray()]);
     }
 
     public function indexCount()
@@ -39,7 +42,7 @@ class CustomerController extends Controller
             return response()->json(['error'=>'Esta cedula no se encuentra en nuestros registros. Verifique y consulte de nuevo.'], 404);
         }
         $contract = $customer->contract;
-        $plan = Plan::select('name','cost')->find($customer->contract->plan_id);
+        $plan = Plan::select('id','name','cost')->find($customer->contract->plan_id);
         return response()->json(['customer'=>$customer, 'contract'=> $contract, 'plan'=>$plan]);
     }
 
@@ -59,7 +62,7 @@ class CustomerController extends Controller
             $customer->save();
 
             if ($request->plan_id) {
-                $plan = Plan::find($request->plan_id);
+                // $plan = Plan::find($request->plan_id);
                 $contract = new Contract([
                     'customer_id' => $customer->id,
                     'contract_date' => $request->billing_date,
@@ -157,27 +160,12 @@ class CustomerController extends Controller
         return response()->json(['phone'=>$p]);
     }
 
-    public function totalCalculate()
-    {
-        $month = Carbon::now()->month;
-        $year = Carbon::now()->year;
+    public function rememberPay(Customer $customer)
+    {   
+        // dd($customer->contract->plan->name);
+        Mail::to($customer)->send(new RememberPay($customer));
 
-        $customers = Customer::all();
-        $totalSale = [];
-        $total = 0;
-
-        for ($c=0; $c <count($customers); $c++) {
-            $amount = Sale::where('customer_id', $customers[$c]->id)->whereYear('created_at', '=', $year)->whereMonth('created_at', '=', $month)->sum('amount');
-
-            if ($amount != '') {
-                Customer::where('id', $customers[$c]->id)->update([ 'accumulated' => $amount ]);
-                $total = $total + $amount;
-                $arr = array_push($totalSale, ['customer_id' => $customers[$c]->id, 'amount' => $amount]);
-            }
-
-        }
-
-        return response()->json(['totalrray'=>$totalSale, 'amount' => $total ], 200);
+        return response()->json(['message' => 'Mensaje Enviado a: '.$customer->name]);
     }
 
     public function contractEmail($customer, $contract)

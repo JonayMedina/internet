@@ -14,12 +14,12 @@ import Customers from './components/customers/Index';
 
 export const routes = [
     {
-        path : '/administracion/login',
+        path : '/admincnet/login',
         name : 'login',
         component : Login,
     },
     {
-        path : '/administracion/bancos',
+        path : '/admincnet/bancos',
         name : 'banks',
         component : Banks,
         meta:{
@@ -27,7 +27,7 @@ export const routes = [
           }
     },
     {
-        path : '/administracion/planes',
+        path : '/admincnet/planes',
         name : 'plans',
         component : Plans,
         meta:{
@@ -35,7 +35,7 @@ export const routes = [
           }
     },
     {
-        path : '/administracion/planes/crear',
+        path : '/admincnet/planes/crear',
         name : 'create-plan',
         component : CreatePlan,
         meta:{
@@ -43,7 +43,7 @@ export const routes = [
         }
     },
     {
-        path : '/administracion/clientes',
+        path : '/admincnet/clientes',
         name : 'customers',
         component : Customers,
         meta:{
@@ -51,7 +51,7 @@ export const routes = [
         }
     },
     {
-        path : '/administracion/cobros',
+        path : '/admincnet/cobros',
         name : 'charges',
         component : Charges,
         meta:{
@@ -59,7 +59,7 @@ export const routes = [
         }
     },
     {
-        path : '/administracion/cobros/crear',
+        path : '/admincnet/cobros/crear',
         name : 'create-charge',
         component : CreateCharge,
         meta:{
@@ -67,7 +67,7 @@ export const routes = [
           }
     },
     {
-        path : '/administracion/cobros/historial',
+        path : '/admincnet/cobros/historial',
         name : 'history-charge',
         component : HistoryCharge,
         meta:{
@@ -75,7 +75,7 @@ export const routes = [
         }
     },
     {
-        path : '/administracion/home',
+        path : '/admincnet/home',
         name : 'home',
         component : Home,
         meta:{

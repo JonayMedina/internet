@@ -97,11 +97,9 @@
         },
         computed:{
             values() {
-                console.log(Object.values(this.total))
                 return Object.values(this.total);
             },
             labels() {
-                console.log(Object.values(this.days))
                 return Object.keys(this.days);
             }
         },
@@ -114,15 +112,13 @@
             },
             charges(){
                 let me = this
-                axios
-                .get('/api/charges/count')
+                axios.get('/api/charges/count')
                 .then(response => {
-                    var res = response.data
+                    var res = response.data;
                     me.count = res.count;
                     // me.total = Object.values( response.data.total);
-                    me.total = res.total
-                    me.days = res.days
-                    console.log(me.total)
+                    me.total = res.total;
+                    me.days = res.days;
 
                 });
             },

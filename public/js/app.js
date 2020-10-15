@@ -2092,11 +2092,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     values: function values() {
-      console.log(Object.values(this.total));
       return Object.values(this.total);
     },
     labels: function labels() {
-      console.log(Object.values(this.days));
       return Object.keys(this.days);
     }
   },
@@ -2115,7 +2113,6 @@ __webpack_require__.r(__webpack_exports__);
 
         me.total = res.total;
         me.days = res.days;
-        console.log(me.total);
       });
     },
     customers: function customers() {
@@ -3915,6 +3912,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3938,6 +3943,7 @@ __webpack_require__.r(__webpack_exports__);
       turn: 0,
       step: 1,
       saving: false,
+      sending: false,
       errC: 0,
       errCustomers: [],
       headers: [{
@@ -3960,11 +3966,18 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         text: 'email',
         align: 'right',
-        value: 'email',
-        sortable: false
+        value: 'email'
+      }, {
+        text: 'Ultimo Pago',
+        align: 'left',
+        value: 'last_pay.created_at'
       }, {
         text: 'Opciones',
         value: 'actions',
+        sortable: false
+      }, {
+        text: 'Recordar Pago',
+        value: 'send',
         sortable: false
       }]
     };
@@ -4027,6 +4040,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     activeCustomer: function activeCustomer(id) {
+      var me = this;
       var data = {
         'url': '/api/customers/activate/' + id,
         'title': 'Activar Cliente?'
@@ -4036,6 +4050,21 @@ __webpack_require__.r(__webpack_exports__);
         me.alert(1, res);
       })["catch"](function (error) {
         me.alert(4, error);
+      });
+    },
+    sendMail: function sendMail(item) {
+      var me = this;
+      item.sending = true;
+      var data = {
+        'url': '/api/customers/remember-pay/' + item.id,
+        'title': 'Enviar Email de recordatorio al Cliente?'
+      };
+      _helpers_swalfire_js__WEBPACK_IMPORTED_MODULE_0__["default"].sendEmail(data).then(function (res) {
+        me.alert(1, res);
+      })["catch"](function (error) {
+        me.alert(4, error);
+      })["finally"](function () {
+        return item.sending = false;
       });
     },
     editCustomer: function editCustomer(item) {
@@ -28274,75 +28303,83 @@ var render = function() {
               })
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "form-group mt-3" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "boxed-btn",
-                  attrs: { disabled: _vm.loading },
-                  on: {
-                    click: function($event) {
-                      return _vm.searchCustomer(_vm.dni)
-                    }
+            _c(
+              "button",
+              {
+                staticClass: "boxed-btn mt-3 w-100",
+                attrs: { disabled: _vm.loading },
+                on: {
+                  click: function($event) {
+                    return _vm.searchCustomer(_vm.dni)
                   }
-                },
-                [
-                  _c("div", {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: _vm.loading,
-                        expression: "loading"
-                      }
-                    ],
-                    staticClass: "spinner-border spinner-border-sm"
-                  }),
-                  _vm._v("\n                        Buscar Cliente")
-                ]
-              )
-            ])
+                }
+              },
+              [
+                _c("div", {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.loading,
+                      expression: "loading"
+                    }
+                  ],
+                  staticClass: "spinner-border spinner-border-sm"
+                }),
+                _vm._v("\n                    Buscar Cliente")
+              ]
+            )
           ])
         ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-8 mb-50" }, [
         _vm.customer.name
-          ? _c("div", { staticClass: "hero-cap hero-cap2 text-center" }, [
-              _c("h3", {
+          ? _c("div", { staticClass: "hero-cap hero-cap2 text-left" }, [
+              _c("h2", {
+                staticClass: "card-top",
                 domProps: { textContent: _vm._s(_vm.customer.name) }
               }),
               _vm._v(" "),
-              _c("h3", {
-                staticClass: "card-top",
-                domProps: {
-                  textContent: _vm._s("Cliente: " + _vm.customer.email)
-                }
-              }),
+              _c("span", [
+                _vm._v("E-mail: "),
+                _c("h2", {
+                  staticClass: "card-top",
+                  domProps: { textContent: _vm._s(_vm.customer.email) }
+                })
+              ]),
               _vm._v(" "),
-              _c("h3", {
-                staticClass: "card-top",
-                domProps: {
-                  textContent: _vm._s("Nro de Telefono: " + _vm.customer.phone)
-                }
-              }),
+              _c("span", [
+                _vm._v("Nro de Telefono: "),
+                _c("h2", {
+                  staticClass: "card-top",
+                  domProps: { textContent: _vm._s(_vm.customer.phone) }
+                })
+              ]),
               _vm._v(" "),
-              _c("h3", {
-                staticClass: "card-top",
-                domProps: {
-                  textContent: _vm._s("Monto del plan: " + _vm.plan.cost)
-                }
-              }),
+              _c("span", [
+                _vm._v("Monto del plan: "),
+                _c("h2", {
+                  staticClass: "card-top",
+                  domProps: { textContent: _vm._s(_vm.plan.cost) }
+                })
+              ]),
               _vm._v(" "),
-              _c("h3", {
-                staticClass: "card-top",
-                domProps: {
-                  textContent: _vm._s("Numero de Contrato: " + _vm.contract.id)
-                }
-              })
+              _c("span", [
+                _vm._v("Numero de Contrato: "),
+                _c("h2", {
+                  staticClass: "card-top",
+                  domProps: { textContent: _vm._s(_vm.contract.id) }
+                })
+              ])
             ])
-          : _c("div", { staticClass: "hero-cap hero-cap2 text-center" }, [
-              _c("h3", [_vm._v("Por Favor consulte su Cedula Correctamente")])
+          : _c("div", {}, [
+              _c("h3", [_vm._v("Consulte sus datos y Mantengase al dia.")]),
+              _vm._v(" "),
+              _c("img", {
+                staticClass: "img-reponsive w-100",
+                attrs: { src: "./img/gallery/home-blog2.png", alt: "" }
+              })
             ])
       ]),
       _vm._v(" "),
@@ -30210,6 +30247,43 @@ var render = function() {
                                 : _vm._e()
                             ]
                           }
+                        },
+                        {
+                          key: "item.send",
+                          fn: function(ref) {
+                            var item = ref.item
+                            return [
+                              _c(
+                                "v-btn",
+                                {
+                                  staticClass: "ma-1 white--text",
+                                  attrs: {
+                                    color: "green darken-2",
+                                    "x-small": "",
+                                    loading: item.sending
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.sendMail(item)
+                                    }
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    " Recordar pago\n                            "
+                                  ),
+                                  _c(
+                                    "v-icon",
+                                    {
+                                      attrs: { small: "", right: "", dark: "" }
+                                    },
+                                    [_vm._v("mdi-email-send ")]
+                                  )
+                                ],
+                                1
+                              )
+                            ]
+                          }
                         }
                       ])
                     },
@@ -30667,7 +30741,10 @@ var render = function() {
                                         ? _c(
                                             "v-btn",
                                             {
-                                              attrs: { color: "primary" },
+                                              attrs: {
+                                                color: "primary",
+                                                loading: _vm.saving
+                                              },
                                               on: {
                                                 click: function($event) {
                                                   return _vm.createCustomer(
@@ -30684,7 +30761,10 @@ var render = function() {
                                         ? _c(
                                             "v-btn",
                                             {
-                                              attrs: { color: "primary" },
+                                              attrs: {
+                                                color: "primary",
+                                                loading: _vm.saving
+                                              },
                                               on: {
                                                 click: function($event) {
                                                   return _vm.updateCustomer(
@@ -93285,7 +93365,7 @@ function initialize(store, router) {
       next({
         name: 'login'
       });
-    } else if (to.path == '/administracion/' && currentUser != null || to.path == '/administracion/login' && currentUser != null) {
+    } else if (to.path == '/admincnet/' && currentUser != null || to.path == '/admincnet/login' && currentUser != null) {
       next({
         name: 'home'
       });
@@ -93471,6 +93551,32 @@ __webpack_require__.r(__webpack_exports__);
         } else if (result.dismiss === Swal.DismissReason.cancel) {}
       });
     });
+  },
+  sendEmail: function sendEmail(data) {
+    var _this4 = this;
+
+    return new Promise(function (res, rej) {
+      Swal.fire({
+        title: data.title,
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#1565c0',
+        cancelButtonColor: '##0000008a',
+        confirmButtonText: 'Aceptar!',
+        cancelButtonText: 'Cancelar',
+        reverseButtons: true
+      }).then(function (result) {
+        if (result.value) {
+          var me = _this4;
+          axios.get(data.url).then(function (response) {
+            res(response.data.message);
+          })["catch"](function (err) {
+            console.log(err);
+            rej(err);
+          });
+        } else if (result.dismiss === Swal.DismissReason.cancel) {}
+      });
+    });
   }
 });
 
@@ -93507,60 +93613,60 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var routes = [{
-  path: '/administracion/login',
+  path: '/admincnet/login',
   name: 'login',
   component: _components_Login_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
 }, {
-  path: '/administracion/bancos',
+  path: '/admincnet/bancos',
   name: 'banks',
   component: _components_banks_Index__WEBPACK_IMPORTED_MODULE_3__["default"],
   meta: {
     requireAuth: true
   }
 }, {
-  path: '/administracion/planes',
+  path: '/admincnet/planes',
   name: 'plans',
   component: _components_plans_Index__WEBPACK_IMPORTED_MODULE_5__["default"],
   meta: {
     requireAuth: true
   }
 }, {
-  path: '/administracion/planes/crear',
+  path: '/admincnet/planes/crear',
   name: 'create-plan',
   component: _components_plans_Create__WEBPACK_IMPORTED_MODULE_6__["default"],
   meta: {
     requireAuth: true
   }
 }, {
-  path: '/administracion/clientes',
+  path: '/admincnet/clientes',
   name: 'customers',
   component: _components_customers_Index__WEBPACK_IMPORTED_MODULE_9__["default"],
   meta: {
     requireAuth: true
   }
 }, {
-  path: '/administracion/cobros',
+  path: '/admincnet/cobros',
   name: 'charges',
   component: _components_charges_Index__WEBPACK_IMPORTED_MODULE_4__["default"],
   meta: {
     requireAuth: true
   }
 }, {
-  path: '/administracion/cobros/crear',
+  path: '/admincnet/cobros/crear',
   name: 'create-charge',
   component: _components_charges_Create__WEBPACK_IMPORTED_MODULE_7__["default"],
   meta: {
     requireAuth: true
   }
 }, {
-  path: '/administracion/cobros/historial',
+  path: '/admincnet/cobros/historial',
   name: 'history-charge',
   component: _components_charges_History__WEBPACK_IMPORTED_MODULE_8__["default"],
   meta: {
     requireAuth: true
   }
 }, {
-  path: '/administracion/home',
+  path: '/admincnet/home',
   name: 'home',
   component: _components_Home__WEBPACK_IMPORTED_MODULE_1__["default"],
   meta: {

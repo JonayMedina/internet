@@ -53,6 +53,14 @@
                                 <v-icon small right dark>  mdi-close-outline </v-icon>
                             </v-btn>
                         </template>
+                        <template v-slot:item.send="{item}">
+                            <v-btn @click="sendMail(item)"
+                            color="green darken-2" x-small
+                            class="ma-1 white--text" :loading="item.sending"
+                            > Recordar pago
+                                <v-icon small right dark>mdi-email-send </v-icon>
+                            </v-btn>
+                        </template>
                     </v-data-table>
                 </v-card>
             </v-flex>
@@ -126,8 +134,8 @@
                         <v-row>
                             <v-col cols="6">
                                 <v-btn text @click="dialog = false" > Cancelar</v-btn>
-                                <v-btn color="primary" v-if="turn == 1" @click="createCustomer(customer)" >Guardar</v-btn>
-                                <v-btn color="primary" v-if="turn == 2" @click="updateCustomer(customer)" >Actualizar</v-btn>
+                                <v-btn color="primary" v-if="turn == 1" @click="createCustomer(customer)" :loading="saving" >Guardar</v-btn>
+                                <v-btn color="primary" v-if="turn == 2" @click="updateCustomer(customer)" :loading="saving" >Actualizar</v-btn>
                             </v-col>
                             <v-col cols="6" class="text-right">
                                 <v-btn color="gray" right @click="step = 1">Regresar</v-btn>
@@ -170,6 +178,7 @@ export default {
             turn:0,
             step:1,
             saving: false,
+            sending: false,
             errC:0,
             errCustomers:[],
             headers: [
@@ -198,9 +207,18 @@ export default {
                     text:'email',
                     align: 'right',
                     value: 'email',
-                    sortable: false
                 },
-                { text: 'Opciones', value: 'actions', sortable: false }
+                {
+                    text: 'Ultimo Pago',
+                    align: 'left',
+                    value: 'last_pay.created_at',
+                },
+                { text: 'Opciones', value: 'actions', sortable: false },
+                { 
+                    text: 'Recordar Pago',
+                    value: 'send',
+                    sortable: false
+                }
             ],
 
         }
@@ -252,21 +270,22 @@ export default {
 
         },
         desactiveCustomer(id){
-            let me = this
+            let me = this;
             const data = {
                 'url':'/api/customers/desactive/'+id,
                 'title' :'Esta seguro de inactivar este Cliente ?',
-            }
+            };
             fire.desactiveF(data)
             .then((res)=>{
                 me.index();
-                me.alert(2,res)
+                me.alert(2,res);
             })
             .catch((error)=>{
-                me.alert(4,error)
+                me.alert(4,error);
             })
         },
         activeCustomer(id){
+            let me = this;
             const data = {
                 'url':'/api/customers/activate/'+id,
                 'title' :'Activar Cliente?',
@@ -274,11 +293,27 @@ export default {
             fire.activeF(data)
             .then((res)=>{
                 me.index();
-                me.alert(1,res)
+                me.alert(1,res);
             })
             .catch((error)=>{
-                me.alert(4,error)
+                me.alert(4,error);
             })
+        },
+        sendMail(item){
+            let me = this;
+            item.sending = true;
+            const data = {
+                'url':'/api/customers/remember-pay/'+item.id,
+                'title' :'Enviar Email de recordatorio al Cliente?',
+            };
+            fire.sendEmail(data)
+            .then((res)=>{
+                me.alert(1,res);
+            })
+            .catch((error)=>{
+                me.alert(4,error);
+            })
+            .finally(() => item.sending = false)
         },
         editCustomer (item) {
             let me = this;
@@ -292,17 +327,17 @@ export default {
             if(me.validateCustomer()){
                 return;
             }
-            me.saving = true
-            me.customer._method = 'put'
+            me.saving = true;
+            me.customer._method = 'put';
             axios.post(`/api/customers/update/${me.customer.id}`,me.customer)
             .then((res) => {
                 me.clearData();
-                me.alert(1,res.data.message)
+                me.alert(1,res.data.message);
             })
             .catch((error)=>{
-                me.alert(4,error)
+                me.alert(4,error);
             })
-            .finally(() => me.saving = false)
+            .finally(() => me.saving = false);
         },
         deleteCustomer(id){
             let me = this;

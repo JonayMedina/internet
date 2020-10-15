@@ -4422,7 +4422,7 @@ hr {
 
 /* line 3, Internet_service/assets/scss/_blog_page.scss */
 .home-blog-area {
-  background: #f8fcff;
+  background: #fffdf8;
 }
 
 /* line 5, Internet_service/assets/scss/_blog_page.scss */
@@ -7755,3 +7755,13 @@ del {
 footer p {
     color: #bdbdbd;
 }
+
+div.single-services{
+    height: 80%!important;
+    bottom: 20px;
+}
+
+div.blog-cap h3{
+    height: 60%!important;
+}
+

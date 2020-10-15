@@ -124,7 +124,36 @@ export default {
                 }
             })
         })
-    }
+    },
+    sendEmail(data) {
+        return new Promise((res,rej)=>{
+            Swal.fire({
+                title: data.title,
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#1565c0',
+                cancelButtonColor: '##0000008a',
+                confirmButtonText: 'Aceptar!',
+                cancelButtonText: 'Cancelar',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.value) {
+                    let me=this;
+                    axios.get(data.url)
+                    .then((response)=>{
+                        res(response.data.message)
+                    }) .catch((err)=> {
+                        console.log(err)
+                        rej(err)
+                    });
+                } else if (
+                    result.dismiss === Swal.DismissReason.cancel
+                    ){
+
+                }
+            })
+        })
+    },
 
 }
 

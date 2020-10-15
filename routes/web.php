@@ -6,11 +6,11 @@ Route::get('/', 'PagesController@index')->name('index');
 // Route::get('/nosotros', 'PagesController@about')->name('about');
 Route::get('/contacto/{type}', 'PagesController@contact')->name('contact');
 
-Route::get('/administracion/{any?}', function (){
+Route::get('/admincnet/{any?}', function (){
     return view('pages.admin');
 })->where('any', '.*');
 
-Route::get('/reportar-pago', 'PaymentController@create')->name('pay-report');
+Route::get('/reportar-tu-pago', 'PaymentController@create')->name('pay-report');
 
 Route::post('/payment/store', 'PaymentController@store')->name('store-report');
 
