@@ -183,11 +183,6 @@ export default {
             errCustomers:[],
             headers: [
                 {
-                    text:'id',
-                    align: 'right',
-                    value: 'id',
-                },
-                {
                     text:'Nombre',
                     align: 'right',
                     value: 'name',
@@ -207,6 +202,16 @@ export default {
                     text:'email',
                     align: 'right',
                     value: 'email',
+                },
+                {
+                    text: 'N° Contrato',
+                    align: 'rigth',
+                    value: 'contract.contract_num',
+                },
+                {
+                    text: 'Plan Asignado',
+                    align: 'rigth',
+                    value: 'contract.plan.name',
                 },
                 {
                     text: 'Ultimo Pago',

@@ -32,6 +32,5 @@ class Customer extends Model
     {
         return $this->payment()->select('created_at')->orderBy('created_at','desc')->first();
     }
-
     
 }

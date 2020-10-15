@@ -5,7 +5,7 @@
 
 @section('content')
     <!--? Hero Start -->
-    <div class="about-low-area section-padding2">
+    <div class="about-low-area section-padding4">
             <div class="container">
                 <div class="row justify-content-between">
                     <div class="col-xl-12 mb-50">

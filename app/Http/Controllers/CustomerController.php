@@ -17,15 +17,14 @@ use Illuminate\Http\Request;
 class CustomerController extends Controller
 {
     use HelpersTrait;
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        $customers = Customer::all();
-        // dd($customers);
+        // $customers = Customer::with(['contract:customer_id,contract_num','plan:id,name'])->get();
+
+        $customers = Customer::with(['contract'=> function ($query) {
+                $query->with('plan:id,name')->get();
+            }])->get();
         return response()->json(['customers' => $customers->toArray()]);
     }
 
@@ -37,7 +36,7 @@ class CustomerController extends Controller
 
     public function search(Request $request)
     {
-        $customer = Customer::where('dni', $request->dni)->with('contract:customer_id,id,plan_id')->first();
+        $customer = Customer::where('dni', $request->dni)->with('contract:customer_id,id,contract_num,plan_id')->first();
         if (!$customer) {
             return response()->json(['error'=>'Esta cedula no se encuentra en nuestros registros. Verifique y consulte de nuevo.'], 404);
         }
@@ -62,8 +61,10 @@ class CustomerController extends Controller
             $customer->save();
 
             if ($request->plan_id) {
-                // $plan = Plan::find($request->plan_id);
+                $c = Contract::select('id')->orderBy('id','desc')->first();
+                $c_id = $c->id+1;
                 $contract = new Contract([
+                    'contract_num' => 'CN#-'.str_pad($c_id, 10, "0", STR_PAD_LEFT),
                     'customer_id' => $customer->id,
                     'contract_date' => $request->billing_date,
                     'plan_id' => $request->plan_id,
@@ -100,19 +101,11 @@ class CustomerController extends Controller
         return response()->json($customer);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Sale  $customer
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request,$id)
     {
         $customer = Customer::findOrFail($id);
-        // dd($request);
-        $customer->update($request->all());
 
+        $customer->update($request->all());
         return response()->json(['message'=>'Cliente actualizado']);
     }
 
@@ -133,7 +126,6 @@ class CustomerController extends Controller
 
         return response()->json(['message' => 'activado']);
     }
-
 
     public function destroy($id)
     {

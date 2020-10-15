@@ -26,7 +26,7 @@
                     <span>E-mail: <h2 class="card-top" v-text="customer.email"></h2></span>
                     <span>Nro de Telefono: <h2 class="card-top" v-text="customer.phone"></h2></span>
                     <span>Monto del plan: <h2 class="card-top" v-text="plan.cost"></h2></span>
-                    <span>Numero de Contrato: <h2 class="card-top" v-text="contract.id"></h2></span>
+                    <span>Numero de Contrato: <h2 class="card-top" v-text="contract.contract_num"></h2></span>
 
                 </div>
                 <div class="" v-else>

@@ -12,7 +12,7 @@ class Contract extends Model
     use HasFactory;
 
     protected $fillable = [
-        'customer_id','plan_id','contract_date','contract_amount',
+        'contract_num','customer_id','plan_id','contract_date','contract_amount',
         'notes', 'active'
     ];
 

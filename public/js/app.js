@@ -3947,10 +3947,6 @@ __webpack_require__.r(__webpack_exports__);
       errC: 0,
       errCustomers: [],
       headers: [{
-        text: 'id',
-        align: 'right',
-        value: 'id'
-      }, {
         text: 'Nombre',
         align: 'right',
         value: 'name'
@@ -3967,6 +3963,14 @@ __webpack_require__.r(__webpack_exports__);
         text: 'email',
         align: 'right',
         value: 'email'
+      }, {
+        text: 'N° Contrato',
+        align: 'rigth',
+        value: 'contract.contract_num'
+      }, {
+        text: 'Plan Asignado',
+        align: 'rigth',
+        value: 'contract.plan.name'
       }, {
         text: 'Ultimo Pago',
         align: 'left',
@@ -28369,7 +28373,7 @@ var render = function() {
                 _vm._v("Numero de Contrato: "),
                 _c("h2", {
                   staticClass: "card-top",
-                  domProps: { textContent: _vm._s(_vm.contract.id) }
+                  domProps: { textContent: _vm._s(_vm.contract.contract_num) }
                 })
               ])
             ])

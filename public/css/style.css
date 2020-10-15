@@ -2543,11 +2543,21 @@ hr {
   padding-bottom: 200px;
 }
 
+.section-padding4 {
+  padding-top: 100px;
+  padding-bottom: 70px;
+}
+
 @media only screen and (min-width: 1200px) and (max-width: 1600px) {
   /* line 703, Internet_service/assets/scss/_common.scss */
   .section-padding2 {
     padding-top: 200px;
     padding-bottom: 200px;
+  }
+
+  .section-padding4 {
+    padding-top: 100px;
+    padding-bottom: 70px;
   }
 }
 
@@ -2557,6 +2567,11 @@ hr {
     padding-top: 200px;
     padding-bottom: 200px;
   }
+
+  .section-padding4 {
+    padding-top: 100px;
+    padding-bottom: 70px;
+  }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -2564,6 +2579,11 @@ hr {
   .section-padding2 {
     padding-top: 100px;
     padding-bottom: 100px;
+  }
+
+  .section-padding4 {
+    padding-top: 70px;
+    padding-bottom: 50px;
   }
 }
 
@@ -2573,6 +2593,11 @@ hr {
     padding-top: 70px;
     padding-bottom: 70px;
   }
+
+  .section-padding4 {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
 }
 
 @media (max-width: 575px) {
@@ -2580,6 +2605,11 @@ hr {
   .section-padding2 {
     padding-top: 70px;
     padding-bottom: 70px;
+  }
+
+  .section-padding4 {
+    padding-top: 50px;
+    padding-bottom: 50px;
   }
 }
 

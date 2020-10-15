@@ -17,6 +17,7 @@ class ContractSeeder extends Seeder
         $faker = Faker::create();
 		for ($i=1; $i < 50; $i++) {
 		    DB::table('contracts')->insert([
+                'contract_num' => 'CN#-'.str_pad($i, 10, "0", STR_PAD_LEFT),
                 'customer_id' => $i,
                 'contract_date' => $faker->dateTimeThisCentury->format('Y-m-d'),
                 'active'=>1,
