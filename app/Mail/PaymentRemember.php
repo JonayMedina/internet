@@ -7,15 +7,16 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class RememberPay extends Mailable
+class PaymentRemember extends Mailable
 {
     use Queueable, SerializesModels;
-    public $customer;
+
+    public $contract;
     public $url;
 
-    public function __construct($customer)
+    public function __construct($contract)
     {
-        $this->customer = $customer;
+        $this->contract = $contract;
         $this->url = route('pay-report');
     }
 
@@ -26,7 +27,7 @@ class RememberPay extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.customer.remember-pay')
-                    ->subject('Recordatorio de Pago de Servicios Cnet');
+        return $this->markdown('emails.customer.remember-payments')
+                    ->subject('Recodatorio 5 dias para su fecha de pago Servicios Cnet');
     }
 }

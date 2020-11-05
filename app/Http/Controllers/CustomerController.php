@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use DB;
 use PDF;
 use Mail;
-use Traits\HelpersTrait;
-use App\Models\Customer;
+use Carbon\Carbon;
 use App\Models\Plan;
-use App\Models\Contract;
 use App\Models\Payment;
-use App\Mail\CustomerContract;
+use App\Models\Customer;
+use App\Models\Contract;
 use App\Mail\RememberPay;
+use App\Mail\CustomerContract;
+use Traits\HelpersTrait;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -23,7 +24,7 @@ class CustomerController extends Controller
         // $customers = Customer::with(['contract:customer_id,contract_num','plan:id,name'])->get();
 
         $customers = Customer::with(['contract'=> function ($query) {
-                $query->with('plan:id,name')->get();
+                $query->with('plan:id,name');
             }])->get();
         return response()->json(['customers' => $customers->toArray()]);
     }
@@ -153,7 +154,7 @@ class CustomerController extends Controller
     }
 
     public function rememberPay(Customer $customer)
-    {   
+    {
         // dd($customer->contract->plan->name);
         Mail::to($customer)->send(new RememberPay($customer));
 

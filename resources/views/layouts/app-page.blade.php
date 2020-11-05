@@ -187,7 +187,7 @@
                         <div class="col-xl-6 col-lg-4">
                             <div class="footer-copy-right">
                                 <p>
-                                Copyright &copy; 2020 All rights reserved | Made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="#" target="_blank">JonayMedina.com.ve</a>
+                                Copyright &copy; 2020 All rights reserved | Made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="mailto:jonaymedinadev@gmail.com" >JonayMedina</a>
                                 </p>
                             </div>
                         </div>
